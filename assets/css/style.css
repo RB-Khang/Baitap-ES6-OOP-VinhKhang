@@ -1,0 +1,95 @@
+/* reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* modal */
+.modal-header {
+    display: block;
+    text-align: center;
+}
+
+
+#adminForm select {
+    padding: 4px;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+#adminForm input {
+    width: 70%;
+    padding: 4px;
+    outline: none;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.inputChung {
+    display: none;
+}
+
+#adminForm h3 {
+    color: #333;
+    text-align: center;
+    font-size: 18px;
+}
+
+#adminForm .inputStudent {
+    display: none;
+    justify-content: space-between;
+}
+
+#adminForm .inputStudent input {
+    width: 30%;
+
+}
+
+#adminForm .inputEmployee {
+    display: none;
+    justify-content: space-between;
+}
+
+#adminForm .inputEmployee input {
+    width: 45%;
+
+}
+
+#adminForm .inputCustomer {
+    display: none;
+    justify-content: space-between;
+}
+
+#adminForm .inputCustomer input {
+    width: 45%;
+
+}
+
+/* table */
+td {
+    vertical-align: middle;
+}
+
+
+
+
+
+/* button */
+button {
+    margin: 0 5px;
+}
+
+
+/* select */
+#sortBtn,
+#filterBtn {
+    padding: 8px 0.75rem;
+    border-radius: 5px;
+    outline: none;
+}
