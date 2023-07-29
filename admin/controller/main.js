@@ -59,10 +59,10 @@ function renderListPerson(arr = listPerson.arrPerson) {
             <td>${value.mapTypeRole()}</td>
             <td>${value.adress}</td>
             <td>${value.email}</td>
-            <td> <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="detailNd('${value.maNd}')">Detail</button>
+            <td class="text-center"> <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="detailNd('${value.maNd}')">Detail</button>
             <button class="btn btn-outline-secondary"  onclick="modalEditNd('${value.maNd}')" data-bs-toggle="modal"
             data-bs-target="#adminModal">Edit</button>
-                <button class="btn btn-danger" onclick="modalDeleteNd('${value.maNd}')">Delete</button>
+                <button class="btn btn-outline-danger" onclick="modalDeleteNd('${value.maNd}')">Delete</button>
                 
             </td>
             </tr>
@@ -98,6 +98,7 @@ btnType.onchange = function () {
 }
 //nút Thêm nhân viên
 btnThem.onclick = function () {
+    getId('personRole').disabled = false
     getId('editPerson').style.display = 'none'
     getId('adminForm').reset()
     getId('thongBao').innerHTML = 'Nhập thông tin chi tiết'
@@ -315,7 +316,6 @@ const maNDTest = () => {
 //-------------------------------------------EDIT DATABASE FUNCTION --------
 //Chức năng thêm người dùng
 addPersonBtn.onclick = function () {
-    getId('personRole').disabled = false
     if (btnType.value === 'student') {
         if (maNDTest() && nameTest() && adressTest() && emailTest() && diemTest('diemToan', 'tbaoToan', 'Điểm Toán phải từ 0 đến 10') && diemTest('diemLy', 'tbaoLy', 'Điểm Lý phải từ 0 đến 10') && diemTest('diemHoa', 'tbaoHoa', 'Điểm Hoá phải từ 0 đến 10')) {
             let newstudent = getInfoStudent()
@@ -448,7 +448,7 @@ const sortND = () => {
         let nameb = b.name.toUpperCase()
         return namea.localeCompare(nameb)
     })
-    console.log(arrSorted);
+    // console.log(arrSorted);
     renderListPerson(arrSorted)
 }
 getId('sortBtn').onchange = function () {
@@ -597,6 +597,28 @@ window.detailNd = (maND) => {
     })
 }
 
+
+
+
+//--------------------------SEARCH THEO TÊN---------------
+let inputSearch = getId('searchPerson')
+inputSearch.addEventListener('keyup', () => {
+    let valueSearch = inputSearch.value.replace(/\s/g, '').toUpperCase()
+    let arrSearch = []
+    for (let i = 0; i < listPerson.arrPerson.length; i++) {
+        if (valueSearch === '') {
+            renderListPerson()
+        } else {
+            let person = listPerson.arrPerson[i]
+            let personName = person.name.replace(/\s/g, '').toUpperCase()
+            if (personName.indexOf(valueSearch) !== -1) {
+                arrSearch.push(person)
+                renderListPerson(arrSearch)
+            }
+        }
+    }
+
+})
 
 
 //---------------------RUNTIME VALIDATION----------------
