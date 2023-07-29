@@ -291,16 +291,25 @@ const hoaDonTest = function () {
 
 
 const maNDTest = () => {
-    let valueTest = getId('maND').value
-    let trung = false
-    listPerson.arrPerson.forEach(value => {
-        if (value.id === value) {
-            trung = true
+    let maNDLength = lengthTest('maND', 'tbaoMa', 0, 'Vui lòng nhập mã người dùng')
+    // console.log(maNDLength);
+    if (maNDLength) {
+        let valueTest = getId('maND').value
+        let trung = false
+        listPerson.arrPerson.forEach(value => {
+            if (value.maNd === valueTest) {
+                trung = true
+            }
+        })
+        if (trung) {
+            getId('tbaoMa').style.display = 'block'
+            getId('tbaoMa').innerHTML = 'Mã người dùng bị trùng. Vui lòng nhập mã khác'
+            return false
+        } else {
+            getId('tbaoMa').style.display = 'none'
+            return true
         }
-    })
-    if (trung) {
-        return false
-    } else return true
+    } else return false
 }
 
 //-------------------------------------------EDIT DATABASE FUNCTION --------
@@ -487,7 +496,7 @@ window.detailNd = (maND) => {
                             <td>Địa chỉ:</td>
                             <td>${value.adress}</td>
                         </tr>
-                        <tr>
+                        <tr class="border-bottom">
                             <td>Email:</td>
                             <td>${value.email}</td>
                         </tr>
@@ -499,18 +508,19 @@ window.detailNd = (maND) => {
                             <td>Điểm lý:</td>
                             <td>${value.diemLy}</td>
                         </tr>
-                        <tr>
+                        <tr class="border-bottom">
                             <td>Điểm hoá:</td>
                             <td>${value.diemHoa}</td>
                         </tr>
                         <tr>
-                            <td>Điểm trung bình</td>
-                            <td>${value.diemTrungBinh().toFixed(2)}</td>
+                            <td class="fw-bold">Điểm trung bình:</td>
+                            <td class="fw-bold">${value.diemTrungBinh().toFixed(2)}</td>
                         </tr>
                     </tbody>
                    </table>
                 `
             } else if (value.typeRole === 'customer') {
+                let danhGia = value.danhGia()
                 getId('detailContent').innerHTML = `
                 <table class="table table-borderless">
                     <tbody>
@@ -526,7 +536,7 @@ window.detailNd = (maND) => {
                             <td>Địa chỉ:</td>
                             <td>${value.adress}</td>
                         </tr>
-                        <tr>
+                        <tr class="border-bottom">
                             <td>Email:</td>
                             <td>${value.email}</td>
                         </tr>
@@ -534,13 +544,13 @@ window.detailNd = (maND) => {
                             <td>Tên công ty:</td>
                             <td>${value.tenCty}</td>
                         </tr>
-                        <tr>
+                        <tr class="border-bottom">
                             <td>Giá trị hoá đơn:</td>
                             <td>${value.hoaDon}</td>
                         </tr>
                         <tr>
-                            <td>Đánh giá</td>
-                            <td>${value.danhGia()}</td>
+                            <td class="fw-bold">Đánh giá:</td>
+                            <td class="fw-bold">${danhGia}</td>
                         </tr>
                     </tbody>
                    </table>
@@ -561,7 +571,7 @@ window.detailNd = (maND) => {
                             <td>Địa chỉ:</td>
                             <td>${value.adress}</td>
                         </tr>
-                        <tr>
+                        <tr class="border-bottom">
                             <td>Email:</td>
                             <td>${value.email}</td>
                         </tr>
@@ -569,13 +579,13 @@ window.detailNd = (maND) => {
                             <td>Số ngày làm:</td>
                             <td>${value.ngayLam}</td>
                         </tr>
-                        <tr>
+                        <tr class="border-bottom">
                             <td>Lương theo ngày:</td>
                             <td>${value.luongNgay}</td>
                         </tr>
                         <tr>
-                            <td>Tổng lương</td>
-                            <td>${value.tinhLuong()}</td>
+                            <td class="fw-bold">Tổng lương:</td>
+                            <td class="fw-bold">${value.tinhLuong()}</td>
                         </tr>
                     </tbody>
                    </table>
@@ -589,6 +599,9 @@ window.detailNd = (maND) => {
 
 
 //---------------------RUNTIME VALIDATION----------------
+getId('maND').onblur = function () {
+    maNDTest()
+}
 getId('tenND').onblur = function () {
     nameTest()
 }
