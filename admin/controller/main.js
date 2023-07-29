@@ -342,6 +342,7 @@ addPersonBtn.onclick = function () {
 
 //popUp info người dùng
 window.modalEditNd = function (maNd) {
+    getElements('.tBao').forEach(value => value.style.display = 'none')
     getId('personRole').disabled = true
     getId('addPerson').style.display = 'none'
     getId('thongBao').innerHTML = 'Thay đổi thông tin chi tiết'
