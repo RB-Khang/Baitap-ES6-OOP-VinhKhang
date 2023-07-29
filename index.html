@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QLHVNC</title>
+    <title>Quản lý học viện</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -27,24 +27,26 @@
 
     <section>
         <div class="container px-lg-5 mt-5 d-flex justify-content-between">
-            <button class="btn btn-success" id="btn__them" data-bs-toggle="modal"
-                data-bs-target="#adminModal">Thêm người dùng</button>
-            <select id="sortBtn" class="border-dark-subtle">
-                <option value="none">Sort theo</option>
-                <option value="name">Tên</option>
-            </select>
-            <select id="filterBtn" class="border-dark-subtle">
-                <option value="none">Lọc theo người dùng</option>
-                <option value="student">Sinh viên</option>
-                <option value="employee">Giảng viên</option>
-                <option value="customer">Công ty khách hàng</option>
-            </select>
+            <button class="btn btn-success" id="btn__them" data-bs-toggle="modal" data-bs-target="#adminModal">Thêm
+                người dùng</button>
+            <div class="function__select">
+                <select id="sortBtn" class="border-dark-subtle">
+                    <option value="none">Sắp xếp</option>
+                    <option value="name">Tên</option>
+                </select>
+                <select id="filterBtn" class="border-dark-subtle">
+                    <option value="none">Lọc theo người dùng</option>
+                    <option value="student">Sinh viên</option>
+                    <option value="employee">Giảng viên</option>
+                    <option value="customer">Công ty khách hàng</option>
+                </select>
+            </div>
         </div>
         <div class="container px-lg-5 mt-3">
             <table class="table table-bordered">
                 <thead>
-                    <tr class="table-primary">
-                        <th>Mã người dùng</th>
+                    <tr class="table-success">
+                        <th class="text-center">Mã ND</th>
                         <th>Tên người dùng</th>
                         <th>Vai trò</th>
                         <th>Địa chỉ</th>
@@ -81,9 +83,14 @@
                         </select>
                         <!-- input chung -->
                         <input class="inputChung" type="text" id="maND" placeholder="Mã người dùng">
+                        <p><span id="tbaoMa" class="tBao"></span></p>
                         <input class="inputChung" type="text" id="tenND" placeholder="Tên người dùng">
+                        <p><span id="tbaoTen" class="tBao"></span></p>
                         <input class="inputChung" type="text" id="adressND" placeholder="Địa chỉ ">
+                        <p><span id="tbaoAdress" class="tBao"></span></p>
                         <input class="inputChung" type="text" id="emailND" placeholder="Email ">
+                        <p><span id="tbaoemail" class="tBao"></span></p>
+
                         <br>
                         <h3 class="inputChung" id="thongBao">Nhập thông tin chi tiết</h3>
                         <!-- input student -->
@@ -92,15 +99,28 @@
                             <input type="number" placeholder="Điểm Lý" id="diemLy">
                             <input type="number" placeholder="Điểm Hoá" id="diemHoa">
                         </div>
+                        <div class="tBaoStudent">
+                            <span id="tbaoToan" class="tBao"></span>
+                            <span id="tbaoLy" class="tBao"></span>
+                            <span id="tbaoHoa" class="tBao"></span>
+                        </div>
                         <!-- input employee -->
                         <div class="inputEmployee">
                             <input type="number" placeholder="Số ngày làm việc" id="ngayLam">
                             <input type="number" placeholder="Lương theo ngày" id="luongNgay">
                         </div>
+                        <div class="tBaoEmployee">
+                            <span id="tbaoNgaylam" class="tBao"></span>
+                            <span id="tbaoLuongngay" class="tBao"></span>
+                        </div>
                         <!-- input customer -->
                         <div class="inputCustomer">
                             <input type="text" placeholder="Tên công ty" id="tenCty">
                             <input type="number" placeholder="Giá trị hoá đơn" id="giaHoadon">
+                        </div>
+                        <div class="tBaoCustomer">
+                            <span id="tbaoTencty" class="tBao"></span>
+                            <span id="tbaoHoadon" class="tBao"></span>
                         </div>
                     </form>
                 </div>
@@ -122,8 +142,8 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Thông tin chi tiết</h1>
                 </div>
                 <div class="modal-body" id="detailContent">
-                   <!-- render by JS -->
-                   
+                    <!-- render by JS -->
+
                 </div>
                 <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
