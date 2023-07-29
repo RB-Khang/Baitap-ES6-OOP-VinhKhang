@@ -315,7 +315,7 @@ const maNDTest = () => {
 //-------------------------------------------EDIT DATABASE FUNCTION --------
 //Chức năng thêm người dùng
 addPersonBtn.onclick = function () {
-
+    getId('personRole').disabled = false
     if (btnType.value === 'student') {
         if (maNDTest() && nameTest() && adressTest() && emailTest() && diemTest('diemToan', 'tbaoToan', 'Điểm Toán phải từ 0 đến 10') && diemTest('diemLy', 'tbaoLy', 'Điểm Lý phải từ 0 đến 10') && diemTest('diemHoa', 'tbaoHoa', 'Điểm Hoá phải từ 0 đến 10')) {
             let newstudent = getInfoStudent()
@@ -342,6 +342,7 @@ addPersonBtn.onclick = function () {
 
 //popUp info người dùng
 window.modalEditNd = function (maNd) {
+    getId('personRole').disabled = true
     getId('addPerson').style.display = 'none'
     getId('thongBao').innerHTML = 'Thay đổi thông tin chi tiết'
     getId('editPerson').style.display = 'inline-block'
