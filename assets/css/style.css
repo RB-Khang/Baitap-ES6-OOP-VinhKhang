@@ -9,6 +9,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
+
+
 /* modal */
 .modal-header {
     display: block;
@@ -68,8 +72,25 @@ body {
 
 #adminForm .inputCustomer input {
     width: 45%;
-
 }
+
+
+/* select */
+#sortBtn,
+#filterBtn {
+    padding: 8px 0.75rem;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+.tBao{
+    color: red;
+    font-style: italic;
+    font-size: 14px;
+}
+
+
 
 /* table */
 td {
@@ -85,11 +106,3 @@ button {
     margin: 0 5px;
 }
 
-
-/* select */
-#sortBtn,
-#filterBtn {
-    padding: 8px 0.75rem;
-    border-radius: 5px;
-    outline: none;
-}
