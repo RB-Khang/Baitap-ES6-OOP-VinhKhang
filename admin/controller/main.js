@@ -303,9 +303,15 @@ const maNDTest = () => {
             }
         })
         if (trung) {
-            getId('tbaoMa').style.display = 'block'
-            getId('tbaoMa').innerHTML = 'Mã người dùng bị trùng. Vui lòng nhập mã khác'
-            return false
+            let testEdit = getId('maND').readOnly
+            if (testEdit) {
+                return
+            }
+            else {
+                getId('tbaoMa').style.display = 'block'
+                getId('tbaoMa').innerHTML = 'Mã người dùng bị trùng. Vui lòng nhập mã khác'
+                return false
+            }
         } else {
             getId('tbaoMa').style.display = 'none'
             return true
