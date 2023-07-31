@@ -417,7 +417,7 @@ btnSave.onclick = function () {
                 }
 
             } else if (value.typeRole === 'customer') {
-                if (maNDTest() && nameTest() && adressTest() && emailTest() && tenCtyTest() && hoaDonTest()) {
+                if (nameTest() && adressTest() && emailTest() && tenCtyTest() && hoaDonTest()) {
                     let editPerson = getInfoCustomer()
                     listPerson.arrPerson.splice(index, 1, editPerson)
                     setLocal()
@@ -425,7 +425,7 @@ btnSave.onclick = function () {
                 }
 
             } else if (value.typeRole === 'employee') {
-                if (maNDTest() && nameTest() && adressTest() && emailTest() && luongNgayTest() && ngayLamTest()) {
+                if (nameTest() && adressTest() && emailTest() && luongNgayTest() && ngayLamTest()) {
                     let editPerson = getInfoEmployee()
                     listPerson.arrPerson.splice(index, 1, editPerson)
                     setLocal()
