@@ -438,13 +438,17 @@ btnSave.onclick = function () {
 }
 //chức năng xoá người dùng
 window.modalDeleteNd = function (maND) {
-    listPerson.arrPerson.forEach((value, index) => {
-        if (value.maNd === maND) {
-            listPerson.arrPerson.splice(index, 1)
-        }
-    })
-    setLocal()
-    renderListPerson()
+    let choice = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
+    if (choice === true) {
+        listPerson.arrPerson.forEach((value, index) => {
+            if (value.maNd === maND) {
+                listPerson.arrPerson.splice(index, 1)
+            }
+        })
+        setLocal()
+        renderListPerson()
+    }
+
 }
 
 //Sort theo tên
